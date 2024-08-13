@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="/css/profile.css">
+</head>
+<body>
+    <main>
+        <h2>Profile Page</h2>
+        <div class="profile-box">
+            <div class="profile-image">
+                <img src="/images/profile.jpg" alt="Profile Image">
+            </div>
+            <div class="profile-details">
+                <% if (user) { %>
+                    <h3>Username: <%= user.username %></h3>
+                    <h3>Email Address: <%= user.email %></h3>
+                    <div class="buttons">
+                        <a href="/profile/edit" class="edit-button">Edit Profile</a>
+                        <form action="/profile/delete" method="POST">
+                            <button class="button" type="submit">Delete User</button>
+                        </form>
+                        <form action="/logout" method="POST">
+                            <button class="button" type="submit">Log Out</button>
+                        </form>
+                    </div>
+                <% } else { %>
+                    <p>Please <a href="/login">log in</a> to view your profile.</p>
+                <% } %>
+            </div>
+        </div>
+    </main>
+    
+    <% if (welcome) { %>
+        <script>
+            alert('Welcome to User!');
+        </script>
+    <% } %>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile Page</title>
+    <link rel="stylesheet" href="/css/profile.css">
+</head>
+<body>
+    
+    <main>
+        <h2>Edit Profile Page</h2>
+        <div class="profile-box">
+            <div class="profile-image">
+                <img src="/images/profile.jpg" alt="Profile Image">
+            </div>
+            <div class="profile-details">
+                <% if (user) { %>
+                    <form action="/profile/edit" method="POST">
+                        <div class="input-box">
+                            <label for="username">Full Name:</label>
+                            <input type="text" name="username" id="username" value="<%= user.username %>" required>
+                        </div>
+                        <div class="input-box">
+                            <label for="email">Email Address:</label>
+                            <input type="email" name="email" id="email" value="<%= user.email %>" required>
+                        </div>
+                        <div class="input-box">
+                            <label for="password">New Password:</label>
+                            <input type="password" name="password" id="password" placeholder="Enter new password">
+                        </div>                        
+                        <div class="buttons">
+                            <button type="submit" class="button">Save Changes</button>
+                            <a href="/profile" class="button cancel-button">Cancel</a>
+                        </div>
+                    </form>
+                <% } else { %>
+                    <p>Please <a href="/login">log in</a> to edit your profile.</p>
+                <% } %>
+            </div>
+        </div>
+    </main>
+    
+</body>
+</html>
